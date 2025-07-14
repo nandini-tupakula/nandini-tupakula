@@ -1,172 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Starter Page - EasyFolio Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nandini Tupakula | Starter Page</title>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
+  <!-- Main CSS file -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+     /*--------------------------------------------------------------
+# Global Reset
+--------------------------------------------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+      scroll-behavior: smooth;
+    }
+section {
+      min-height: 100vh;
+      padding-top: 100px;
+    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f0f2f5, #ffffff);
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
 
-  <!-- =======================================================
-  * Template Name: EasyFolio
-  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
-  * Updated: Feb 21 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+header {
+  background: linear-gradient(135deg, #000 0%, #000 100%);
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1.25rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+header > * { position: relative; z-index: 1; }
+
+header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+header p {
+  margin-top: 0.625rem;
+  color: #ffffff;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+header a {
+  color: #ffffff;
+  font-weight: 600;
+  transition: color .3s, text-shadow .3s;
+}
+header a:hover {
+  color: #ffeaa7;
+  text-shadow: 0 0 8px rgba(255,255,255,.6);
+}
+
+/*--------------------------------------------------------------
+# CTA Button
+--------------------------------------------------------------*/
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
+.cta-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 10px 20px rgba(59,130,246,.3);
+  transition: all .4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -100%;
+  background: rgba(255,255,255,.2);
+  transform: skewX(-30deg);
+  transition: .6s;
+}
+.cta-btn:hover::after { left: 200%; }
+.cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(59,130,246,.4);
+}
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #1e293b;
+  gap: 1.2rem;
+  padding: 1rem 0;
+}
+nav a {
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  transition: color .3s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #38bdf8;
+  transition: width .3s;
+}
+nav a:hover::after { width: 100%; }
+
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+section {
+  max-width: 960px;
+  margin: auto;
+  padding: 3rem 1.25rem;
+  opacity: 0;
+  animation: fadeInUp .8s ease forwards;
+}
+section:nth-of-type(odd) {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+h2 {
+  margin-bottom: .75rem;
+  padding-bottom: .5rem;
+  font-size: 1.5rem;
+  border-bottom: 3px solid #cbd5e1;
+  color: #1e293b;
+}
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);  opacity: 1; }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+footer {
+  background: #0f172a;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: .9rem;
+}
+
+/*--------------------------------------------------------------
+# Responsive Helpers
+--------------------------------------------------------------*/
+@media (max-width: 640px) {
+  header { padding: 3rem 1rem 2.5rem; }
+  .cta-btn { font-size: 1rem; padding: .85rem 2rem; }
+  nav     { gap: .8rem; }
+  h2      { font-size: 1.25rem; }
+}
+  </style>
 </head>
+<body class="fade-in">
 
-<body class="starter-page-page">
+  <!-- ========= HEADER ========= -->
+  <header>
+    <h1>Nandini Tupakula</h1>
+    <p>AI • Full-Stack Dev • UI/UX Designer | Cleveland, Ohio</p>
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:nandinit09250@gmail.com">nandinit09250@gmail.com</a> |
+      <strong>Phone:</strong> +1&nbsp;(201)&nbsp;780-8679
+    </p>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">EasyFolio</h1>
-      </a>
+    <p>
+      <a href="https://linkedin.com/in/nandini-tupakula-518" target="_blank">LinkedIn</a> |
+      <a href="https://github.com/nandini-tupakula" target="_blank">GitHub</a>
+    </p>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
-
-    </div>
+    <p>Work Authorization: F-1 Visa (CPT/OPT Eligible)</p>
   </header>
 
-  <main class="main">
+  <!-- ========= CALL-TO-ACTION ========= -->
+  <div class="button-container fade-in" style="animation-delay:0.3s">
+    <a class="cta-btn" href="index.html">Go to Portfolio Page</a>
+  </div>
 
-    <!-- Page Title -->
-    <div class="page-title">
-      <div class="breadcrumbs">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active current">Starter Page</li>
-          </ol>
-        </nav>
-      </div>
+  <!-- ========= NAVIGATION ========= -->
+  <nav class="fade-in" style="animation-delay:0.4s">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-      <div class="title-wrapper">
-        <h1>Starter Page</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-      </div>
-    </div><!-- End Page Title -->
+  <!-- ========= MAIN CONTENT ========= -->
+  <section id="about">
+    <h2>Professional Summary</h2>
+    <p>
+      Results-driven Computer Science graduate with a Master’s from Cleveland
+      State University and a Bachelor’s from KL University. Experienced in Java,
+      Python, and SQL with a strong grasp of full-stack development and UI/UX
+      design. Known for building scalable software systems and solving
+      real-world problems through technology.
+    </p>
+  </section>
 
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> C, Python, Java, SQL</li>
+      <li><strong>Web Tech:</strong> HTML5, CSS3, JavaScript</li>
+      <li><strong>AI/ML:</strong> Basics, Neural Networks, Scikit-learn</li>
+      <li><strong>Data Analytics:</strong> Pandas, NumPy, Power BI</li>
+      <li><strong>Cloud:</strong> AWS, GCP</li>
+      <li><strong>UI/UX:</strong> Figma, Wireframing, User Flow</li>
+      <li><strong>Tools:</strong> Git, GitHub, VS Code, IntelliJ</li>
+      <li><strong>Soft Skills:</strong> Problem Solving, Time Management, Teamwork</li>
+    </ul>
+  </section>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Starter Section</h2>
-        <div class="title-shape">
-          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-        </div>
-        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur vel illum qui dolorem</p>
-      </div><!-- End Section Title -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>
+        <strong>Desi Drip Milk Delivery</strong> – Figma, UI/UX<br>
+        Designed intuitive wireframes for a localized milk-delivery service.
+      </li>
+      <li>
+        <strong>Bank Management System</strong> – JavaFX, Swing, MySQL<br>
+        Created a full-stack banking app with secure login, transactions, and
+        responsive UI.
+      </li>
+      <li>
+        <strong>Advanced Car Parking System</strong> – Python, Tkinter, MySQL<br>
+        Developed a slot-based parking manager with admin login and automatic
+        PDF reports.
+      </li>
+    </ul>
+  </section>
 
-      <div class="container" data-aos="fade-up">
-        <p>Use this page as a starter for your own custom pages.</p>
-      </div>
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>MS in CS & IS</strong> – Cleveland State University (2024 – 2025) • CGPA 3.24/4.00</li>
+      <li><strong>B.Tech in CS (Cyber Security)</strong> – KL University (2019 – 2023) • CGPA 7.57/10.00</li>
+    </ul>
+  </section>
 
-    </section><!-- /Starter Section Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> nandinit09250@gmail.com</p>
+    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nandini-tupakula-518" target="_blank">Profile</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/nandini-tupakula" target="_blank">Projects</a></p>
+    <p><strong>Location:</strong> Cleveland, Ohio, USA</p>
+  </section>
 
-  </main>
-
-  <footer id="footer" class="footer">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">EasyFolio</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
+  <!-- ========= FOOTER ========= -->
+  <footer>
+    <p>&copy; 2025 Nandini Tupakula. All rights reserved.</p>
   </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
